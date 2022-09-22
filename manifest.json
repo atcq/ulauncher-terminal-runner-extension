@@ -30,6 +30,17 @@
             "default_value": "--"
         },
         {
+             "id": "exit",
+             "type": "select",
+             "name": "Exit Action",
+             "description": "What to do after the program has finished",
+             "default_value": "shell",
+             "options": [
+                 {"text": "Drop to shell", "value": "shell"},
+                 {"text": "Exit with any key", "value": "exitAnyKey"}
+            ]
+        },
+        {
             "id": "icon",
             "type": "select",
             "name": "Icon style",
