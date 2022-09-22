@@ -49,12 +49,20 @@ class RunCommand(EventListener):
         
         terminal = extension.preferences["term"]
         exec = extension.preferences["exec"]
+        exitAction = extension.preferences["exit"]
         command = data["command"]
 
         userShell = environ["SHELL"]
+        exitAnyKey = 'read -n 1 -s -r -p \\"Press any key to exit!\\" && exit 0'
 
+        if exitAction == "shell":
+            exitAction = userShell
+        elif exitAction == "exitAnyKey":
+            exitAction = exitAnyKey
+        else:
+            exitAction = userShell
 
-        subprocess.run( [f'{terminal} {exec} {userShell} -c "{command}; {userShell}"'], shell=True )
+        subprocess.run( [f'{terminal} {exec} {userShell} -c "{command} && {exitAction}"'], shell=True )
 
         return HideWindowAction()
 
