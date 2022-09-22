@@ -62,7 +62,7 @@ class RunCommand(EventListener):
         else:
             exitAction = userShell
 
-        subprocess.run( [f'{terminal} {exec} {userShell} -c "{command} && {exitAction}"'], shell=True )
+        subprocess.run( [f'{terminal} {exec} {userShell} -c "{command}; {exitAction}"'], shell=True )
 
         return HideWindowAction()
 
